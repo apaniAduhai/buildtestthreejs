@@ -1500,6 +1500,71 @@ p, .hero-sub {
   #lbImg { max-height: 80vh; border-radius: 11px; }
   #lbClose { width: 30px; height: 30px; font-size: 0.85rem; top: 8px; right: 8px; }
 }
+
+/* ═══════════════════════════════════
+   WAVE ENTRANCE ANIMATIONS
+═══════════════════════════════════ */
+
+/* ── Base state: semua elemen wave tersembunyi ── */
+.wave-from-right,
+.wave-from-left,
+.wave-zoom {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* ── HOME: Gelombang dari kanan ── */
+@keyframes waveFromRight {
+  0%   { opacity: 0; transform: translateX(120px) scaleX(1.04); }
+  18%  { opacity: 0.6; transform: translateX(-18px) scaleX(0.97); }
+  36%  { opacity: 0.85; transform: translateX(10px) scaleX(1.015); }
+  52%  { opacity: 0.95; transform: translateX(-6px) scaleX(0.995); }
+  68%  { opacity: 1; transform: translateX(3px) scaleX(1.004); }
+  84%  { transform: translateX(-1px) scaleX(0.999); }
+  100% { opacity: 1; transform: translateX(0) scaleX(1); }
+}
+
+.wave-from-right.wave-enter {
+  animation: waveFromRight 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── ABOUT: Gelombang dari kiri ── */
+@keyframes waveFromLeft {
+  0%   { opacity: 0; transform: translateX(-120px) scaleX(1.04); }
+  18%  { opacity: 0.6; transform: translateX(18px) scaleX(0.97); }
+  36%  { opacity: 0.85; transform: translateX(-10px) scaleX(1.015); }
+  52%  { opacity: 0.95; transform: translateX(6px) scaleX(0.995); }
+  68%  { opacity: 1; transform: translateX(-3px) scaleX(1.004); }
+  84%  { transform: translateX(1px) scaleX(0.999); }
+  100% { opacity: 1; transform: translateX(0) scaleX(1); }
+}
+
+.wave-from-left.wave-enter {
+  animation: waveFromLeft 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── ART: Zoom in/out seperti ombak laut ── */
+@keyframes waveZoom {
+  0%   { opacity: 0; transform: scale(0.72) translateY(28px); }
+  20%  { opacity: 0.7; transform: scale(1.06) translateY(-6px); }
+  40%  { opacity: 0.9; transform: scale(0.97) translateY(4px); }
+  60%  { opacity: 1; transform: scale(1.025) translateY(-2px); }
+  78%  { transform: scale(0.99) translateY(1px); }
+  90%  { transform: scale(1.006) translateY(-0.5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.wave-zoom.wave-enter {
+  animation: waveZoom 1.0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Stagger delays untuk anak-anak elemen ── */
+.wave-delay-1 { animation-delay: 0.08s !important; }
+.wave-delay-2 { animation-delay: 0.18s !important; }
+.wave-delay-3 { animation-delay: 0.28s !important; }
+.wave-delay-4 { animation-delay: 0.38s !important; }
+.wave-delay-5 { animation-delay: 0.48s !important; }
+.wave-delay-6 { animation-delay: 0.58s !important; }
 </style>
 </head>
 <body>
@@ -1539,14 +1604,14 @@ p, .hero-sub {
 <!-- ══ HOME ══ -->
 <section id="home" class="page">
   <div class="home-content">
-    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Designer &amp; modeler</div>
-    <h1 class="hero-title">Al<br><span class="grad">Fathan</span><br>Ilyasa</h1>
-    <p class="hero-sub">3D modeler berbasis blender</p>
-    <div class="hero-btns">
+    <div class="hero-eyebrow wave-from-right wave-delay-1"><span class="hero-eyebrow-dot"></span>Designer &amp; modeler</div>
+    <h1 class="hero-title wave-from-right wave-delay-2">Al<br><span class="grad">Fathan</span><br>Ilyasa</h1>
+    <p class="hero-sub wave-from-right wave-delay-3">3D modeler berbasis blender</p>
+    <div class="hero-btns wave-from-right wave-delay-4">
       <button class="btn-crystal" onclick="navTo('art')">View Portfolio</button>
       <button class="btn-ghost"   onclick="navTo('about')">About Me</button>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats wave-from-right wave-delay-5">
       <div class="glass stat-card">
         <div class="stat-num" id="projCount">0</div>
         <div class="stat-label">Karya 3D</div>
@@ -1563,13 +1628,13 @@ p, .hero-sub {
 
 <!-- ══ ABOUT ══ -->
 <section id="about" class="page">
-  <div class="section-eyebrow">Who I Am</div>
-  <h2 class="section-title">Tentang Saya</h2>
+  <div class="section-eyebrow wave-from-left wave-delay-1">Who I Am</div>
+  <h2 class="section-title wave-from-left wave-delay-2">Tentang Saya</h2>
 
   <div class="about-layout">
     <div class="about-left">
 
-      <div class="skill-abstract">
+      <div class="skill-abstract wave-from-left wave-delay-3">
         <div class="skill-abstract-inner"></div>
         <div class="card-content">
           <div class="card-title">Main Skill</div>
@@ -1585,7 +1650,7 @@ p, .hero-sub {
         </div>
       </div>
 
-      <div class="edu-abstract">
+      <div class="edu-abstract wave-from-left wave-delay-4">
         <div class="edu-cream-bg"></div>
         <div class="edu-cream-border"></div>
         <div class="edu-drips">
@@ -1609,7 +1674,7 @@ p, .hero-sub {
         </div>
       </div>
 
-      <div class="tools-section">
+      <div class="tools-section wave-from-left wave-delay-5">
         <div class="tools-label">Software &amp; Tools</div>
         <div class="tools-scatter">
           <div class="tool-item"><i class="fa-solid fa-cube" style="color:#f5a623"></i><span class="tool-name">Blender</span></div>
@@ -1621,7 +1686,7 @@ p, .hero-sub {
       </div>
 
       <!-- ══ CONTACT MELT CARD ══ -->
-      <div class="contact-abstract">
+      <div class="contact-abstract wave-from-left wave-delay-6">
         <div class="contact-melt-bg"></div>
         <div class="contact-melt-border"></div>
         <div class="contact-melt-inner"></div>
@@ -1680,8 +1745,8 @@ p, .hero-sub {
 <!-- ══ ART ══ -->
 <section id="art" class="page">
   <div class="art-header">
-    <div class="section-eyebrow">Galeri</div>
-    <h2 class="section-title">Galeri Karya</h2>
+    <div class="section-eyebrow wave-zoom wave-delay-1">Galeri</div>
+    <h2 class="section-title wave-zoom wave-delay-2">Galeri Karya</h2>
   </div>
   <div class="art-grid" id="artGrid"></div>
 </section>
@@ -1997,7 +2062,153 @@ function initViewer(containerId, art, isInteractive) {
 
 document.getElementById('projCount').textContent = artworksData.length;
 
-/* ─── Photo Lightbox ─── */
+/* ─── WAVE SCROLL ANIMATIONS (BIDIRECTIONAL) ───
+   Elemen MASUK  → animasi gelombang masuk (kanan/kiri/zoom)
+   Elemen KELUAR → langsung hilang (opacity 0, posisi reset)
+   Efek berulang setiap kali scroll naik/turun.
+─── */
+(function initWaveAnimations() {
+
+  /* ── CSS tambahan: animasi keluar ── */
+  const styleOut = document.createElement('style');
+  styleOut.textContent = `
+    /* Elemen yang sedang keluar dari viewport */
+    .wave-exit {
+      animation: none !important;
+      opacity: 0 !important;
+      transition: opacity 0.32s ease, transform 0.32s ease !important;
+    }
+    .wave-from-right.wave-exit { transform: translateX(80px) !important; }
+    .wave-from-left.wave-exit  { transform: translateX(-80px) !important; }
+    .wave-zoom.wave-exit       { transform: scale(0.80) translateY(20px) !important; }
+
+    /* Reset state sebelum animasi ulang (tanpa transisi) */
+    .wave-reset {
+      opacity: 0 !important;
+      transition: none !important;
+      animation: none !important;
+    }
+    .wave-from-right.wave-reset { transform: translateX(100px) !important; }
+    .wave-from-left.wave-reset  { transform: translateX(-100px) !important; }
+    .wave-zoom.wave-reset       { transform: scale(0.75) translateY(24px) !important; }
+  `;
+  document.head.appendChild(styleOut);
+
+  /* ── Helper: jalankan ulang animasi masuk ── */
+  function triggerEnter(el) {
+    /* 1. Set ke state awal tanpa transisi */
+    el.classList.remove('wave-enter', 'wave-exit');
+    el.classList.add('wave-reset');
+
+    /* 2. Force reflow */
+    void el.offsetWidth;
+
+    /* 3. Hapus reset, mulai animasi masuk */
+    el.classList.remove('wave-reset');
+    el.classList.add('wave-enter');
+  }
+
+  /* ── Helper: sembunyikan elemen saat keluar viewport ── */
+  function triggerExit(el) {
+    el.classList.remove('wave-enter', 'wave-reset');
+    el.classList.add('wave-exit');
+  }
+
+  /* ── Observer utama ── */
+  const waveObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        triggerEnter(entry.target);
+      } else {
+        /* Hanya sembunyikan kalau elemen sudah pernah masuk sebelumnya
+           (cegah flicker saat halaman pertama load elemen di luar viewport) */
+        if (entry.target.classList.contains('wave-enter') ||
+            entry.target.dataset.waveSeenOnce) {
+          entry.target.dataset.waveSeenOnce = 'true';
+          triggerExit(entry.target);
+        }
+      }
+    });
+  }, {
+    threshold: 0.10,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  /* Observe semua elemen wave statik */
+  document.querySelectorAll(
+    '.wave-from-right, .wave-from-left, .wave-zoom'
+  ).forEach(el => waveObs.observe(el));
+
+  /* ── Art cards: observe saat grid di-render via MutationObserver ── */
+  const artGrid = document.getElementById('artGrid');
+  if (artGrid) {
+    const gridMutObs = new MutationObserver(() => {
+      artGrid.querySelectorAll('.art-card:not([data-wave-observed])').forEach((card, i) => {
+        card.dataset.waveObserved = 'true';
+        if (!card.classList.contains('wave-zoom')) {
+          card.classList.add('wave-zoom');
+        }
+        /* Stagger delay per card */
+        card.style.setProperty('--wave-card-delay', (i * 0.13) + 's');
+        /* Override animation-delay via style saat wave-enter */
+        const origOnAnimStart = card.addEventListener.bind(card);
+        card.addEventListener('animationstart', () => {}, { once: true });
+        waveObs.observe(card);
+      });
+    });
+    gridMutObs.observe(artGrid, { childList: true });
+  }
+
+  /* ── Terapkan stagger delay pada art cards ──
+     Karena delay diatur via class, kita tambahkan inline style
+     yang override animation-delay secara dinamis saat enter ── */
+  const _origTriggerEnter = triggerEnter;
+  /* patch agar art-card ikut delay index */
+  const patchedEnter = function(el) {
+    if (el.classList.contains('art-card') && el.dataset.waveObserved) {
+      const delay = el.style.getPropertyValue('--wave-card-delay') || '0s';
+      el.classList.remove('wave-enter', 'wave-exit');
+      el.classList.add('wave-reset');
+      void el.offsetWidth;
+      el.classList.remove('wave-reset');
+      el.style.animationDelay = delay;
+      el.classList.add('wave-enter');
+    } else {
+      _origTriggerEnter(el);
+    }
+  };
+
+  /* Re-observe dengan fungsi patched */
+  if (artGrid) {
+    const artGridObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          patchedEnter(entry.target);
+        } else {
+          if (entry.target.classList.contains('wave-enter') ||
+              entry.target.dataset.waveSeenOnce) {
+            entry.target.dataset.waveSeenOnce = 'true';
+            triggerExit(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+
+    /* MutationObserver pakai artGridObs, bukan waveObs */
+    const artGrid2 = document.getElementById('artGrid');
+    if (artGrid2) {
+      new MutationObserver(() => {
+        artGrid2.querySelectorAll('.art-card:not([data-art-obs])').forEach((card, i) => {
+          card.dataset.artObs = 'true';
+          if (!card.classList.contains('wave-zoom')) card.classList.add('wave-zoom');
+          card.style.setProperty('--wave-card-delay', (i * 0.13) + 's');
+          artGridObs.observe(card);
+        });
+      }).observe(artGrid2, { childList: true });
+    }
+  }
+
+})();
 function openLightbox(src) {
   const lb  = document.getElementById('photoLightbox');
   const img = document.getElementById('lbImg');
